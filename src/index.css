@@ -1,13 +1,72 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: sans-serif;
+
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: white;
+  background-color: rgb(0, 0, 0);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+}
+
+p{
+  color: #ffffff;
+}
+
+a {
+  margin-top: 10px;
+  color: #ffffff;
+}
+
+.App > div {
+  margin: 0.5em;
+}
+
+.form-login {
+  margin-bottom: 15px;
+}
+.MuiFormControl-root {
+  margin-top: 15px;
+}
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #02a12c;
+  margin-bottom: 15px;
+}
+.circle-icon {
+  color: #eaeaea;
+  position: relative;
+  top: 26%;
+  left: 26%;
+}
+.main-menu {
+  background-color: #02a12c;
+}
+
+.main-menu-button {
+  background-color: #02a12c;
+  filter: brightness(1.2);
+  margin: 0.5em;
+  font-family: Consolas;
+}
+
+.submit_button {
+  background: linear-gradient(to bottom, #02a12c 100%, #02a12c 100%);
+  cursor: pointer;
+  color: #ffffff;
+}
+.submit_button:hover {
+  background: linear-gradient(to bottom, #eaeaea 100%, #eaeaea 100%);
+  color: #02a12c;
+}
+
+.centered_div {
+  text-align: center;
+  margin-right: 25%;
+  margin-left: 25%;
 }
