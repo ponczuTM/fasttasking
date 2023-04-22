@@ -130,7 +130,7 @@ const Navbar = (props) => {
     content = <Nav scrollNav={scrollNav}>
       <NavbarContainer>
         <NavLogo to="/" onClick={toggleHome} sx={{ color: "#ffffff" }}>
-          fasttasking
+          ✅fasttasking
         </NavLogo>
         <NavMenu>
           {menu}
