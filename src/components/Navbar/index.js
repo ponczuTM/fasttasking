@@ -44,7 +44,7 @@ const Navbar = (props) => {
         <React.Fragment>
           <NavItem>
             <NavLinksOutside to="/user" >
-              Użytkownicy
+              Pracownicy
             </NavLinksOutside>
           </NavItem>
           <NavItem>
@@ -69,17 +69,7 @@ const Navbar = (props) => {
           </NavItem>
           <NavItem>
             <NavLinksOutside to="/schedule" >
-              Kalendarze
-            </NavLinksOutside>
-          </NavItem>
-          <NavItem>
-            <NavLinksOutside to="/report" >
-              Raporty
-            </NavLinksOutside>
-          </NavItem>
-          <NavItem>
-            <NavLinksOutside to="/charts" >
-              Statystyki
+              Plan pracy
             </NavLinksOutside>
           </NavItem>
           <NavItem>
@@ -93,14 +83,10 @@ const Navbar = (props) => {
         <React.Fragment>
           <NavItem>
             <NavLinksOutside to="/schedule" >
-              Zarządzaj zajęciami
+              Zarządzaj planem pracy
             </NavLinksOutside>
           </NavItem>
-          <NavItem>
-            <NavLinksOutside to="/charts" >
-              Statystyki
-            </NavLinksOutside>
-          </NavItem>
+        
           <NavItem>
             <NavLinksOutside to="/change-password" >
               Zmień hasło
@@ -112,12 +98,12 @@ const Navbar = (props) => {
         <React.Fragment>
         <NavItem>
           <NavLinksOutside to="/activity" >
-            Dodaj zajęcia
+            Dodaj zrealizowane zadanie
           </NavLinksOutside>
         </NavItem>
         <NavItem>
             <NavLinksOutside to="/list" >
-              Moje zajęcia
+              Moje zrealizowane zadania
             </NavLinksOutside>
           </NavItem>
           <NavItem>
