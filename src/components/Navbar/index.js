@@ -59,12 +59,12 @@ const Navbar = (props) => {
           </NavItem>
           <NavItem>
             <NavLinksOutside to="/target" >
-              Obiekty
+              Firmy
             </NavLinksOutside>
           </NavItem>
           <NavItem>
             <NavLinksOutside to="/department" >
-              Instytucje
+              Współpraca
             </NavLinksOutside>
           </NavItem>
           <NavItem>

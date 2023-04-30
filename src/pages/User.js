@@ -28,7 +28,7 @@ const User = () => {
           <HomeIcon sx={{ color: "#02a12c", fontSize: 50, marginTop: 10 }} />
         </Link>
         <Typography sx={{ marginTop: "30px" }}></Typography>
-        <hr width="17%" color="3471eb"></hr>
+        <hr width="17%" color="02a12c"></hr>
         <Typography sx={{ marginTop: "30px" }}></Typography>
         <div className="circle">
           <AccountCircleIcon className="circle-icon" />

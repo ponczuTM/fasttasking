@@ -61,10 +61,10 @@ const Login = () => {
       >
         <Typography sx={{ marginTop: "90px" }}></Typography>
         <Link to="/">
-          <HomeIcon sx={{ color: "#3471eb", fontSize: 50 }} />
+          <HomeIcon sx={{ color: "02a12c", fontSize: 50 }} />
         </Link>
         <Typography sx={{ marginTop: "30px" }}></Typography>
-        <hr width="17%" color="3471eb"></hr>
+        <hr width="17%" color="02a12c"></hr>
         <Typography sx={{ marginTop: "30px" }}></Typography>
         <div className="circle">
           <LockIcon className="circle-icon" />
@@ -96,7 +96,7 @@ const Login = () => {
             id="outlined-password"
             variant="outlined"
             inputProps={{ style: { textAlign: 'center', color: 'white' } }}
-            sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#3471eb" }, }, }}
+            sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }}
           />
           <Typography sx={{ marginTop: "30px" }}></Typography>
           {errors.email && <Alert severity="error">Pole wymagane!</Alert>}
@@ -107,7 +107,7 @@ const Login = () => {
             id="outlined-password"
             variant="outlined"
             inputProps={{ style: { textAlign: 'center', color: 'white' } }}
-            sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#3471eb" }, }, }}
+            sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }}
           />
           {errors.password && <Alert severity="error">Pole wymagane!</Alert>}
           <Typography sx={{ marginTop: "30px" }}></Typography>
