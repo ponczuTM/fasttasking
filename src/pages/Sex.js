@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import Navbar from "../components/Navbar/index";
 import TransgenderIcon from '@mui/icons-material/Transgender';
+import { api } from "../index";
+import CrudTable from "../components/CrudTable/CrudTableElements";
 
 const Sex = () => {
   return (
@@ -36,6 +38,27 @@ const Sex = () => {
           i dodać nowe pozycje
         </Typography>
         <Typography sx={{ marginTop: "30px" }}></Typography>
+        <Box className="CrudTable">
+          <CrudTable addButtonText="Dodaj płeć"
+            rows={[]}
+            rowPreProcessFunction={async () => {
+              return {
+                name: ""
+              };
+            }}
+            rowPostProcessFunction={async (row, isNew) => {
+            }}
+            updateFunction={api.updateSex.bind(api)}
+            createFunction={api.createSex.bind(api)}
+            readFunction={React.useCallback(async () => {
+              return await api.retrieveSexes();
+            })}
+            deleteFunction={api.deleteSex.bind(api)}
+            columns={
+              [
+                { field: 'name', headerName: 'Nazwa', flex: 1, type: 'string', editable: true }
+              ]} />
+        </Box>
       </Box>
     </React.Fragment>
   );

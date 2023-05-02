@@ -6,6 +6,9 @@ import Logout from "./pages/Logout";
 import React from "react";
 import User from "./pages/User";
 import Role from "./pages/Role";
+import Sex from "./pages/Sex";
+import Target from "./pages/Target";
+import Department from "./pages/Department";
 
 function App() {
 	return (
@@ -16,6 +19,9 @@ function App() {
 				<Route exact path="/role" element={<Role/>} />
 				<Route exact path="/login" element={<Login/>} />
 				<Route exact path="/logout" element={<Logout/>} />
+				<Route exact path="/sex" element={<Sex/>} />
+				<Route exact path="/target" element={<Target/>} />
+				<Route exact path="/department" element={<Department/>} />
 			</Routes>
 		</Router>
 	);
