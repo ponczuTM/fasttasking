@@ -9,6 +9,7 @@ import Role from "./pages/Role";
 import Sex from "./pages/Sex";
 import Target from "./pages/Target";
 import Department from "./pages/Department";
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 				<Route exact path="/sex" element={<Sex/>} />
 				<Route exact path="/target" element={<Target/>} />
 				<Route exact path="/department" element={<Department/>} />
+				<Route exact path="/change-password" element={<ChangePassword/>} />
 			</Routes>
 		</Router>
 	);
