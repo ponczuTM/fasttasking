@@ -10,6 +10,7 @@ import Sex from "./pages/Sex";
 import Target from "./pages/Target";
 import Department from "./pages/Department";
 import ChangePassword from "./pages/ChangePassword";
+import Schedule  from "./pages/Schedule";
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 				<Route exact path="/target" element={<Target/>} />
 				<Route exact path="/department" element={<Department/>} />
 				<Route exact path="/change-password" element={<ChangePassword/>} />
+				<Route exact path="/schedule" element={<Schedule/>} />
 			</Routes>
 		</Router>
 	);
