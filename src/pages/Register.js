@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, Box, Button, Typography, FormControl, Alert, Menu, Select, MenuItem } from "@mui/material";
+import { api } from "../index";
+import { useForm } from "react-hook-form";
+import MD5 from "crypto-js/md5";
+import { HttpError } from "../common/http-error";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import { Link} from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 
 const Register = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [redirectToLogin, setRedirectToLogin] = useState(false);
+    const [error, setError] = useState(false);
+    const onSubmit = async (data) => {
+        try {
+            const department = await api.createDepartment({ ...data });
+            await api.createUser({
+                role: {id: 1},
+                department: { id: department.id },
+                email: data.managerEmail,
+                passwordHash: MD5(data.password).toString(),
+                firstName: data.managerFirstName,
+                lastName: data.managerLastName,
+                sex: { id: data.managerSex }
+            });
+            setError({});
+            setRedirectToLogin(true);
+        } catch (e) {
+            if (e instanceof HttpError) {
+                setError(await e.response.json());
+            } else {
+                throw e;
+            }
+        }
+    };
     return (
         <React.Fragment>
             <Box
@@ -32,7 +61,11 @@ const Register = () => {
                 <Typography variant="h5" component="h5" color="white">
                     Rejestracja
                 </Typography>
+                { error.message && <Alert sx={{maxWidth: 500}} severity="error">Nie można zarejestrować podanego 
+                użytkownika. Upewnij się, że podałeś(aś) poprawne informacje oraz, że konto nie 
+                zostało utworzone już wcześniej. Komunikat błędu: {error.message}</Alert>}
                 <FormControl
+                    onSubmit={handleSubmit(onSubmit)}
                     component="form"
                     noValidate
                     className="form-login"
@@ -46,15 +79,17 @@ const Register = () => {
                 >
                     <Typography sx={{ marginTop: "30px" }}></Typography>
                     <p>Imię</p>
-                    <TextField  size="small" id="outlined-login" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white'} }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c"}, },}} />
+                    <TextField {...register("managerFirstName", { required: true })} size="small" id="outlined-login" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white'} }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c"}, },}} />
                     <Typography sx={{ marginTop: "30px" }}></Typography>
+                    {errors.managerFirstName && <Alert severity="error">Pole wymagane!</Alert>}
                     <p>Nazwisko</p>
-                    <TextField  size="small" id="outlined-password" 
+                    <TextField {...register("managerLastName", { required: true })} size="small" id="outlined-password" 
                     variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} 
                     sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, border: '10'}} />
                     <Typography sx={{ marginTop: "30px" }}></Typography>
+                    {errors.managerLastName && <Alert severity="error">Pole wymagane!</Alert>}
                     <p>Płeć</p>
-                    <Select  size="small" id="outlined-password" 
+                    <Select {...register("managerSex", { required: true })} size="small" id="outlined-password" 
                     variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} 
                     sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, width:"220px", backgroundColor: '#6b6b6b',}}>
                         <MenuItem value={1}>Mężczyzna</MenuItem>
@@ -62,18 +97,23 @@ const Register = () => {
                         <MenuItem value={3}>Inna</MenuItem>
                     </Select>
                     <Typography sx={{ marginTop: "30px" }}></Typography>
+                    {errors.managerSex && <Alert severity="error">Pole wymagane!</Alert>}
                     <p>Nazwa firmy</p>
-                    <TextField size="small" id="outlined-login" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
+                    <TextField {...register("name", { required: true })} size="small" id="outlined-login" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
                     <Typography sx={{ marginTop: "30px" }}></Typography>
+                    {errors.name && <Alert severity="error">Pole wymagane!</Alert>}
                     <p>Adres firmy</p>
-                    <TextField size="small" id="outlined-password" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
+                    <TextField {...register("location", { required: true })} size="small" id="outlined-password" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
                     <Typography sx={{ marginTop: "30px" }}></Typography>
+                    {errors.location && <Alert severity="error">Pole wymagane!</Alert>}
                     <p>Adres e-mail</p>
-                    <TextField size="small" id="outlined-login" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
+                    <TextField {...register("managerEmail", { required: true })} size="small" id="outlined-login" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
                     <Typography sx={{ marginTop: "30px" }}></Typography>
+                    {errors.managerEmail && <Alert severity="error">Pole wymagane!</Alert>}
                     <p>Hasło</p>
-                    <TextField type="password" size="small" id="outlined-password" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
+                    <TextField {...register("password", { required: true })} type="password" size="small" id="outlined-password" variant="outlined" inputProps={{ style: { textAlign: 'center', color: 'white' } }} sx={{ "& .MuiOutlinedInput-root": { "& > fieldset": { borderColor: "#02a12c" }, }, }} />
                     <Typography sx={{ marginTop: "30px" }}></Typography>
+                    {errors.password && <Alert severity="error">Pole wymagane!</Alert>}
                     <Button type="submit" className="submit_button" sx={{ color: '#ffffff' }}>Zarejestruj</Button>
                 </FormControl>
                 <Box
@@ -93,6 +133,9 @@ const Register = () => {
                 <Typography sx={{ marginTop: "30px" }}></Typography>
                 <Typography sx={{ marginTop: "30px" }}></Typography>
             </Box>
+            {redirectToLogin && <Navigate to="/login" state={{
+                isJustRegistered: true
+            }} />}
         </React.Fragment>
     );
 };

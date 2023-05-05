@@ -1,13 +1,77 @@
-import React from "react";
-import { Box, FormControl, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Alert, Box, Button, FormControl, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import Navbar from "../components/Navbar/index";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-
+import { api } from "../index";
+import CrudTable from "../components/CrudTable/CrudTableElements";
+import { useForm } from "react-hook-form";
 
 const List = () => {
- 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const [invalidData, setInvalidData] = useState(false);
+  const [schedules, setSchedules] = useState([]);  
+  const [scheduleItems, setScheduleItems] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const schedule = watch("schedule");
+
+  const fetchSchedules = async () => {
+    const schedules = await api.retrieveSchedules();
+    setSchedules(schedules);
+  };
+
+  const fetchScheduleItems = async (scheduleId) => {
+    const scheduleItems = await api.generateSchedule(scheduleId);
+    const twoWeeksBefore = new Date();
+    twoWeeksBefore.setDate(twoWeeksBefore.getDate() - 14);
+    setScheduleItems(scheduleItems.filter((item) => new Date(item.from) >= twoWeeksBefore));
+  };
+
+  const fetchActivities = async () => {
+    const activities = (await api.retrieveActivities()).filter(
+      activity => activity.user.id == localStorage.getItem("userId"));
+    setActivities(activities);
+  };
+
+  useEffect(() => {
+    fetchActivities();
+    fetchSchedules();
+  }, []);
+
+  useEffect(() => {
+    fetchScheduleItems(schedule?.id);
+  }, [schedule]);
+
+  const onSubmit = async (data) => {
+    try {
+      await api.createActivity({
+        moment: data.item.from,
+        schedule: { id: data.schedule.id },
+        user: { id: localStorage.getItem("userId") }
+      });
+      setInvalidData(false);
+      await fetchActivities();
+    } catch (e) {
+      setInvalidData(true);
+    }
+  };
+
+  function formatSchedule(schedule) {
+    if (schedule) {
+      return `${schedule.leaderUser.firstName} ${schedule.leaderUser.lastName} (${schedule.target.name})`;
+    }
+    return "---";
+  }
+  function formatMoment(moment) {
+    return moment.replace("T", " ").replace(":00.000Z", "");
+  }
+
   return (
     <React.Fragment>
       <Navbar />
@@ -41,6 +105,7 @@ const List = () => {
         <Typography sx={{ marginTop: "30px" }}></Typography>
 
         <FormControl
+          onSubmit={handleSubmit(onSubmit)}
           component="form"
           noValidate
           className="Form"
@@ -55,7 +120,29 @@ const List = () => {
         </FormControl>
 
         <Box className="CrudTable">
-         
+          <CrudTable
+            rows={activities}
+            rowPreProcessFunction={() => {}}
+            rowPostProcessFunction={async (row, isNew) => {}}
+            updateFunction={api.updateActivity.bind(api)}
+            createFunction={api.createActivity.bind(api)}
+            readFunction={() => undefined}
+            deleteFunction={api.deleteActivity.bind(api)}
+            columns={
+              [
+                {
+                  field: 'moment',
+                  headerName: 'Data i godzina',
+                  flex: 1,
+                  valueGetter: (params) => formatMoment(params.row.moment)
+                },
+                {
+                  field: 'schedule',
+                  headerName: "Prowadzący i obiekt",
+                  flex: 1,
+                  valueGetter: (params) => formatSchedule(params.row.schedule)
+                }
+              ]} />
         </Box>
         
       </Box>
