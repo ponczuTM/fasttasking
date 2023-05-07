@@ -73,6 +73,11 @@ const Navbar = (props) => {
             </NavLinksOutside>
           </NavItem>
           <NavItem>
+            <NavLinksOutside to="/tasks" >
+              Lista zadań
+            </NavLinksOutside>
+          </NavItem>
+          <NavItem>
             <NavLinksOutside to="/change-password" >
               Zmień hasło
             </NavLinksOutside>
@@ -86,7 +91,11 @@ const Navbar = (props) => {
               Zarządzaj planem pracy
             </NavLinksOutside>
           </NavItem>
-        
+          <NavItem>
+            <NavLinksOutside to="/tasks" >
+              Lista zadań
+            </NavLinksOutside>
+          </NavItem>
           <NavItem>
             <NavLinksOutside to="/change-password" >
               Zmień hasło
@@ -104,6 +113,11 @@ const Navbar = (props) => {
         <NavItem>
             <NavLinksOutside to="/list" >
               Moje zrealizowane zadania
+            </NavLinksOutside>
+          </NavItem>
+          <NavItem>
+            <NavLinksOutside to="/tasks" >
+              Lista zadań
             </NavLinksOutside>
           </NavItem>
           <NavItem>

@@ -14,6 +14,7 @@ import Schedule  from "./pages/Schedule";
 import Activity from "./pages/Activity";
 import List from "./pages/List";
 import Register from "./pages/Register";
+import Tasks from "./pages/Tasks";
 
 function App() {
 	return (
@@ -32,6 +33,7 @@ function App() {
 				<Route exact path="/activity" element={<Activity/>} />
 				<Route exact path="/list" element={<List/>} />
 				<Route exact path="/register" element={<Register/>} />
+				<Route exact path="/tasks" element={<Tasks/>} />
 			</Routes>
 		</Router>
 	);
