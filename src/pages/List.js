@@ -138,7 +138,7 @@ const List = () => {
                 },
                 {
                   field: 'schedule',
-                  headerName: "Prowadzący i obiekt",
+                  headerName: "Kierownik i firma",
                   flex: 1,
                   valueGetter: (params) => formatSchedule(params.row.schedule)
                 }

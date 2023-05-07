@@ -171,7 +171,7 @@ const Activity = () => {
             sx={{ color: "#ffffff" }}
             onClick={refreshPage}
           >
-            Dodaj Zajęcia
+            Dodaj zrealizowane zadanie
           </Button>
           <Typography sx={{ marginTop: "50px" }}></Typography>
         </FormControl>

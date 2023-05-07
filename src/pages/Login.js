@@ -61,7 +61,7 @@ const Login = () => {
       >
         <Typography sx={{ marginTop: "90px" }}></Typography>
         <Link to="/">
-          <HomeIcon sx={{ color: "02a12c", fontSize: 50 }} />
+          <HomeIcon sx={{ color: "#02a12c", fontSize: 50 }} />
         </Link>
         <Typography sx={{ marginTop: "30px" }}></Typography>
         <hr width="17%" color="02a12c"></hr>

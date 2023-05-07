@@ -48,7 +48,7 @@ const Schedule = () => {
   const ScheduleForAdminAndLeader =
     <React.Fragment>
       <Box className="CrudTable">
-        <CrudTable addButtonText="Dodaj kalendarz"
+        <CrudTable addButtonText="Dodaj pracownika"
           onSelectionModelChange={async (params) => {
             setSelectedScheduleId(params[0]);
             const items = (await api.retrieveSchedule(params[0])).items ?? []
@@ -85,7 +85,7 @@ const Schedule = () => {
             [
               {
                 field: 'leaderUser',
-                headerName: "Prowadzący",
+                headerName: "Kierownik",
                 flex: 1,
                 type: 'singleSelect',
                 editable: true,
@@ -99,7 +99,7 @@ const Schedule = () => {
               },
               {
                 field: 'target',
-                headerName: "Obiekt",
+                headerName: "Firma",
                 flex: 1,
                 type: 'singleSelect',
                 editable: true,
@@ -112,7 +112,7 @@ const Schedule = () => {
                 })
               }
             ]} />
-        <CrudTable addButtonText="Dodaj wpis"
+        <CrudTable addButtonText="Dodaj godziny pracy"
           rowPreProcessFunction={async () => {
             return {
               schedule: { id: selectedScheduleId },
