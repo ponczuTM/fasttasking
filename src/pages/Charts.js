@@ -38,43 +38,6 @@ function Charts() {
       </Box>
     </React.Fragment>;
 
-  if (localStorage.getItem("role") == "leader") {
-    return (
-      <>
-        {header}
-        <center>
-          <div style={{ backgroundColor: 'white' }}>
-            <ChartItem title="Płci pracowników" query={`
-          SELECT s.name AS "Płeć", COUNT(*) AS "Ile" 
-          FROM user u
-          INNER JOIN sex s ON s.id = u.sexId
-          WHERE u.departmentId = ${localStorage.getItem("departmentId")}
-          AND u.id IN (
-              SELECT a.userId
-              FROM schedule sch
-              INNER JOIN activity a ON a.scheduleId = sch.id
-              WHERE sch.leaderUserId = ${localStorage.getItem("userId")}
-          )
-          GROUP BY s.name
-        `} />
-          </div>
-          <Typography sx={{ marginTop: "40px" }}></Typography>
-          <div style={{ backgroundColor: 'white' }}>
-            <ChartItem title="Liczba prowadzonych zajęć" query={`
-          SELECT lastName || ' ' || firstName AS "Prowadzący", COUNT(*) AS "Liczba zajęć"
-          FROM user u
-          INNER JOIN schedule s ON s.leaderUserId = u.id
-          WHERE u.departmentId = ${localStorage.getItem("departmentId")}
-          AND u.id = ${localStorage.getItem("userId")}
-          GROUP BY 1
-          ORDER BY 2 DESC
-        `} />
-          </div>
-          <Typography sx={{ marginTop: "40px" }}></Typography>
-        </center>
-      </>
-    );
-  }
   return (
     <>
       {header}
