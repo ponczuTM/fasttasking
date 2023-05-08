@@ -6,15 +6,15 @@ import Navbar from "../components/Navbar/index";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const tasks = [
-  "1. Testowanie oprogramowania - polega na weryfikowaniu, czy dany program działa zgodnie z oczekiwaniami i nie powoduje błędów lub awarii. Pracownik IT może zostać poproszony o wykonanie testów manualnych lub automatycznych, a następnie o raportowanie wyników.",
+  "1. 12.05.2023r. 10:00, Anna Nowak: Testowanie oprogramowania - polega na weryfikowaniu, czy dany program działa zgodnie z oczekiwaniami i nie powoduje błędów lub awarii. Pracownik IT może zostać poproszony o wykonanie testów manualnych lub automatycznych, a następnie o raportowanie wyników.",
   "‎",
-  "2. Rozwijanie oprogramowania - praca nad rozwijaniem nowych funkcjonalności lub ulepszaniem już istniejących. Pracownik IT może zostać poproszony o napisanie nowego kodu, poprawienie błędów lub optymalizację już istniejącego kodu.",
+  "2. 19.05.2023r. 10:00, Anna Nowak: Rozwijanie oprogramowania - praca nad rozwijaniem nowych funkcjonalności lub ulepszaniem już istniejących. Pracownik IT może zostać poproszony o napisanie nowego kodu, poprawienie błędów lub optymalizację już istniejącego kodu.",
   "‎",
-  "3. Konfiguracja i utrzymywanie systemów - polega na zapewnieniu, że serwery, sieci i inne systemy funkcjonują prawidłowo. Pracownik IT może zostać poproszony o konfigurowanie nowych systemów lub aktualizowanie już istniejących, a także o śledzenie ich działania i usuwanie błędów.",
+  "3. 15.05.2023r. 10:30, Adam Małysz: Konfiguracja i utrzymywanie systemów - polega na zapewnieniu, że serwery, sieci i inne systemy funkcjonują prawidłowo. Pracownik IT może zostać poproszony o konfigurowanie nowych systemów lub aktualizowanie już istniejących, a także o śledzenie ich działania i usuwanie błędów.",
   "‎",
-  "4. Wsparcie techniczne - pracownik IT może zostać poproszony o pomaganie użytkownikom w rozwiązywaniu problemów związanych z oprogramowaniem lub sprzętem. Wsparcie może być udzielane za pomocą telefonu, e-maila lub systemu ticketowego.",
+  "4. 22.05.2023r. 10:30, Adam Małysz: Wsparcie techniczne - pracownik IT może zostać poproszony o pomaganie użytkownikom w rozwiązywaniu problemów związanych z oprogramowaniem lub sprzętem. Wsparcie może być udzielane za pomocą telefonu, e-maila lub systemu ticketowego.",
   "‎",
-  "5. Zarządzanie projektami - pracownik IT może zostać poproszony o zarządzanie projektem informatycznym, takim jak wdrożenie nowego systemu. Praca ta obejmuje koordynowanie działań innych pracowników, zapewnianie terminowości i jakości realizacji projektu oraz raportowanie postępów.",
+  "5. 29.05.2023r. 10:30, Adam Małysz: Zarządzanie projektami - pracownik IT może zostać poproszony o zarządzanie projektem informatycznym, takim jak wdrożenie nowego systemu. Praca ta obejmuje koordynowanie działań innych pracowników, zapewnianie terminowości i jakości realizacji projektu oraz raportowanie postępów.",
 ];
 
 const TaskList = () => (
