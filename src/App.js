@@ -15,6 +15,7 @@ import Activity from "./pages/Activity";
 import List from "./pages/List";
 import Register from "./pages/Register";
 import Tasks from "./pages/Tasks";
+import Charts from "./pages/Charts";
 
 function App() {
 	return (
@@ -34,6 +35,7 @@ function App() {
 				<Route exact path="/list" element={<List/>} />
 				<Route exact path="/register" element={<Register/>} />
 				<Route exact path="/tasks" element={<Tasks/>} />
+				<Route exact path="/charts" element={<Charts/>} />
 			</Routes>
 		</Router>
 	);
