@@ -1,4 +1,4 @@
-import { Close as CloseIcon, PictureAsPdf, PlayCircleFilled } from "@mui/icons-material";
+import { Close as CloseIcon, PlayCircleFilled } from "@mui/icons-material";
 import { Button, Card, CardActions, CardContent, Divider, Typography} from "@mui/material";
 import { Chart } from "react-google-charts";
 import React from "react";
