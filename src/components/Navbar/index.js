@@ -78,6 +78,11 @@ const Navbar = (props) => {
             </NavLinksOutside>
           </NavItem>
           <NavItem>
+            <NavLinksOutside to="/charts" >
+              Statystyki
+            </NavLinksOutside>
+          </NavItem>
+          <NavItem>
             <NavLinksOutside to="/change-password" >
               Zmień hasło
             </NavLinksOutside>
